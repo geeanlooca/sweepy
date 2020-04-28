@@ -22,6 +22,7 @@ def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("input", type=is_file)
     parser.add_argument("output", type=is_path)
+    parser.add_argument("--zero-index", default=False, action="store_true")
 
     args = parser.parse_args()
 
@@ -52,9 +53,11 @@ def main():
 
     for x, (conf, params) in enumerate(config_combinations):
 
+        idx = x if args.zero_index else x + 1
+
         if filetype == "yaml":
-            conf.to_yaml(os.path.join(args.output, f"{filename}.{x}{ext}"))
+            conf.to_yaml(os.path.join(args.output, f"{filename}.{idx}{ext}"))
         else:
-            conf.to_json(os.path.join(args.output, f"{filename}.{x}{ext}"))
+            conf.to_json(os.path.join(args.output, f"{filename}.{idx}{ext}"))
 
     # config_bar = tqdm(config_combinations, leave=False)
