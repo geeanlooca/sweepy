@@ -11,7 +11,7 @@ with open(path.join(here, "README.md"), encoding="utf-8") as f:
 # List library dependencies. These are the packages required by the library
 # to function correctly. Packages needed for development are listed in
 # the "requirements.txt" in the root directory of the project.
-requirements = ["numpy", "python-box"]
+requirements = ["numpy", "python-box", "pyyaml"]
 
 # Arguments marked as "Required" below must be included for upload to PyPI.
 # Fields marked as "Optional" may be commented out.
@@ -155,7 +155,7 @@ setup(
     # For example, the following would provide a command called `sample` which
     # executes the function `main` from this package when invoked:
     entry_points={  # Optional
-        "console_scripts": ["pyraman-torch = pyraman.torch._test:main"],
+        "console_scripts": ["sweepy-generate = sweepy.cli.save_files:main"],
     },
     # List additional URLs that are relevant to your project as a dict.
     #
